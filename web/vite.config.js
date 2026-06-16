@@ -5,6 +5,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: Number(process.env.PORT) || 3000,
+    allowedHosts: ['ifn135.onrender.com'],
     proxy: {
       '/api': {
         target: 'http://localhost:3000',
