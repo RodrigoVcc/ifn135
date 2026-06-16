@@ -9,9 +9,16 @@ import inventarioRuta  from './routes/inventario.js';
 import productosRuta   from './routes/productos.js';
 import materialesRuta  from './routes/materiales.js';
 import restockRuta     from './routes/restock.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const distPath = path.join(__dirname, '../../web/dist');
+
 
 app.use(cors({
   origin: process.env.CLIENT_URL ?? 'http://localhost:5173',
@@ -30,4 +37,11 @@ app.use('/api/restock',    restockRuta);
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`API corriendo en puerto ${PORT}`);
+});
+
+
+app.use(express.static(distPath));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(distPath, 'index.html'));
 });
