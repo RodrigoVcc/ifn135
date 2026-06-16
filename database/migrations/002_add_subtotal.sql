@@ -1,0 +1,2 @@
+ALTER TABLE detalle_pedidos
+ADD COLUMN subtotal NUMERIC(10,2) NOT NULL DEFAULT 0;
