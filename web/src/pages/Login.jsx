@@ -10,13 +10,14 @@ const ROLES_REDIRECT = {
 };
 
 export default function Login() {
+  
   const { login } = useAuth();
   const navigate = useNavigate();
   const [form, setForm] = useState({ nombre: '', password: '' });
   const [mostrarPassword, setMostrarPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoad] = useState(false);
-  console.log('DATABASE_URL:', process.env.DATABASE_URL);
+
 
   async function handleSubmit(e) {
     e.preventDefault();

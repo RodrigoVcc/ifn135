@@ -35,6 +35,7 @@ app.use('/api/productos',  productosRuta);
 app.use('/api/materiales', materialesRuta);
 app.use('/api/restock',    restockRuta);
 
+console.log('DATABASE_URL:', process.env.DATABASE_URL);
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`API corriendo en puerto ${PORT}`);
 });
